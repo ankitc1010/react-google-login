@@ -10,7 +10,7 @@ class GoogleLogin extends Component {
     }
   }
   componentDidMount() {
-    const { clientId, cookiePolicy, loginHint, hostedDomain, autoLoad, isSignedIn, fetchBasicProfile, redirectUri, discoveryDocs, onFailure, uxMode, scope, responseType } = this.props
+    const { clientId, cookiePolicy, loginHint, hostedDomain, autoLoad, isSignedIn, fetchBasicProfile, redirectUri, discoveryDocs, onFailure, uxMode, scope, responseType, expiresIn } = this.props
       ; ((d, s, id, cb) => {
         const element = d.getElementsByTagName(s)[0]
         const fjs = element
@@ -29,6 +29,7 @@ class GoogleLogin extends Component {
           fetch_basic_profile: fetchBasicProfile,
           discoveryDocs,
           ux_mode: uxMode,
+          expires_in: expiresIn,
           redirect_uri: redirectUri,
           scope
         }
@@ -165,7 +166,8 @@ GoogleLogin.propTypes = {
   uxMode: PropTypes.string,
   isSignedIn: PropTypes.bool,
   responseType: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  expiresIn: PropTypes.string
 }
 
 GoogleLogin.defaultProps = {
@@ -178,6 +180,7 @@ GoogleLogin.defaultProps = {
   fetchBasicProfile: true,
   isSignedIn: false,
   uxMode: 'popup',
+  expiresIn: '3600',
   disabledStyle: {
     opacity: 0.6
   },
