@@ -31,6 +31,7 @@ class GoogleLogin extends Component {
           ux_mode: uxMode,
           expires_in: expiresIn,
           redirect_uri: redirectUri,
+          expires: ((new Date()).getTime()+expiresIn),
           scope
         }
 
@@ -180,7 +181,7 @@ GoogleLogin.defaultProps = {
   fetchBasicProfile: true,
   isSignedIn: false,
   uxMode: 'popup',
-  expiresIn: '3600',
+  expiresIn: '9000',
   disabledStyle: {
     opacity: 0.6
   },
